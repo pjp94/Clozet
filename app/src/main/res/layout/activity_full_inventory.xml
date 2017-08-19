@@ -3,16 +3,24 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
     tools:context="com.hackathon.dealeron.clozet.FullInventoryActivity">
 
     <LinearLayout
-        android:layout_width="368dp"
-        android:layout_height="495dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:orientation="vertical"
-        tools:layout_editor_absoluteY="8dp"
-        tools:layout_editor_absoluteX="8dp">
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintBottom_creator="1"
+        android:layout_marginStart="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -37,7 +45,7 @@
 
         <TextView
             android:id="@+id/collapse_headwear"
-            android:layout_width="match_parent"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:text="@string/headwear"
@@ -45,37 +53,35 @@
 
         <LinearLayout
             android:id="@+id/headwear_selector"
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:visibility="gone"
-            android:layout_gravity="center">
+            android:gravity="center">
 
             <ImageButton
                 android:id="@+id/headwear_left"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/left_chevron"
-                android:layout_gravity="center"
                 android:background="?android:selectableItemBackground"/>
 
             <ImageView
                 android:id="@+id/headwear_item"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_width="220sp"
+                android:layout_height="250sp" />
 
             <ImageButton
                 android:id="@+id/headwear_right"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/right_chevron"
-                android:layout_gravity="center"
                 android:background="?android:selectableItemBackground" />
         </LinearLayout>
 
         <TextView
             android:id="@+id/collapse_top"
-            android:layout_width="match_parent"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:text="@string/top"
@@ -83,37 +89,35 @@
 
         <LinearLayout
             android:id="@+id/top_selector"
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:visibility="gone"
-            android:layout_gravity="center">
+            android:gravity="center">
 
             <ImageButton
                 android:id="@+id/top_left"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/left_chevron"
-                android:layout_gravity="center"
                 android:background="?android:selectableItemBackground"/>
 
             <ImageView
                 android:id="@+id/top_item"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_width="220sp"
+                android:layout_height="250sp" />
 
             <ImageButton
                 android:id="@+id/top_right"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/right_chevron"
-                android:layout_gravity="center"
                 android:background="?android:selectableItemBackground" />
         </LinearLayout>
 
         <TextView
             android:id="@+id/collapse_bottom"
-            android:layout_width="match_parent"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:text="@string/bottom"
@@ -121,37 +125,35 @@
 
         <LinearLayout
             android:id="@+id/bottom_selector"
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:visibility="gone"
-            android:layout_gravity="center">
+            android:gravity="center">
 
             <ImageButton
                 android:id="@+id/bottom_left"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/left_chevron"
-                android:layout_gravity="center"
                 android:background="?android:selectableItemBackground"/>
 
             <ImageView
                 android:id="@+id/bottom_item"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_width="220sp"
+                android:layout_height="250sp" />
 
             <ImageButton
                 android:id="@+id/bottom_right"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/right_chevron"
-                android:layout_gravity="center"
                 android:background="?android:selectableItemBackground" />
         </LinearLayout>
 
         <TextView
             android:id="@+id/collapse_footwear"
-            android:layout_width="match_parent"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:text="@string/footwear"
@@ -159,31 +161,29 @@
 
         <LinearLayout
             android:id="@+id/footwear_selector"
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:visibility="gone"
-            android:layout_gravity="center">
+            android:gravity="center">
 
             <ImageButton
                 android:id="@+id/footwear_left"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/left_chevron"
-                android:layout_gravity="center"
                 android:background="?android:selectableItemBackground"/>
 
             <ImageView
                 android:id="@+id/footwear_item"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_width="220sp"
+                android:layout_height="250sp" />
 
             <ImageButton
                 android:id="@+id/footwear_right"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/right_chevron"
-                android:layout_gravity="center"
                 android:background="?android:selectableItemBackground" />
         </LinearLayout>
     </LinearLayout>
