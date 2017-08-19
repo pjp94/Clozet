@@ -28,13 +28,13 @@ public class FullInventory {
 
   private void populateHeadwear() {
     HEADWEAR_TYPES.add(HeadwearType.BaseballCap);
-    //HEADWEAR_TYPES.add(HeadwearType.Bandana);
+    HEADWEAR_TYPES.add(HeadwearType.Bandana);
     HEADWEAR_TYPES.add(HeadwearType.Beenie);
-    /*HEADWEAR_TYPES.add(HeadwearType.CowboyHat);
+    HEADWEAR_TYPES.add(HeadwearType.CowboyHat);
     HEADWEAR_TYPES.add(HeadwearType.Fedora);
     HEADWEAR_TYPES.add(HeadwearType.Scarf);
     HEADWEAR_TYPES.add(HeadwearType.SkiMask);
-    HEADWEAR_TYPES.add(HeadwearType.Snapback);*/
+    HEADWEAR_TYPES.add(HeadwearType.Snapback);
   }
 
   private void populateTops() {
