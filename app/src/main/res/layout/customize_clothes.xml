@@ -102,8 +102,8 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="20dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="20dp"
             android:orientation="vertical">
 
             <TextView
@@ -122,14 +122,16 @@
                 android:id="@+id/checkbox_cold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/cold"/>
+                android:text="@string/cold"
+                android:textSize="12sp"/>
 
             <CheckBox
                 android:id="@+id/checkbox_cool"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:text="@string/cool"/>
+                android:layout_marginStart="20dp"
+                android:text="@string/cool"
+                android:textSize="12sp"/>
 
             </LinearLayout>
 
@@ -142,14 +144,16 @@
                     android:id="@+id/checkbox_warm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/warm"/>
+                    android:text="@string/warm"
+                    android:textSize="12sp"/>
 
                 <CheckBox
                     android:id="@+id/checkbox_hot"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="12dp"
-                    android:text="@string/hot"/>
+                    android:layout_marginStart="12dp"
+                    android:text="@string/hot"
+                    android:textSize="12sp"/>
 
             </LinearLayout>
 
@@ -162,14 +166,16 @@
                     android:id="@+id/checkbox_rainy"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/rainy"/>
+                    android:text="@string/rainy"
+                    android:textSize="12sp"/>
 
                 <CheckBox
                     android:id="@+id/checkbox_snowy"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
-                    android:text="@string/snowy"/>
+                    android:layout_marginStart="16dp"
+                    android:text="@string/snowy"
+                    android:textSize="12sp"/>
 
             </LinearLayout>
 
@@ -178,8 +184,7 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_orientation="vertical"
-            android:layout_marginLeft="20dp"
+            android:layout_marginStart="15dp"
             android:orientation="vertical">
 
             <TextView
@@ -198,14 +203,16 @@
                     android:id="@+id/checkbox_casual"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/casual"/>
+                    android:text="@string/casual"
+                    android:textSize="12sp"/>
 
                 <CheckBox
                     android:id="@+id/checkbox_business"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:text="@string/business"/>
+                    android:layout_marginStart="2dp"
+                    android:text="@string/business"
+                    android:textSize="12sp"/>
 
             </LinearLayout>
 
@@ -218,14 +225,15 @@
                     android:id="@+id/checkbox_formal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/formal"/>
+                    android:text="@string/formal"
+                    android:textSize="12sp"/>
 
                 <CheckBox
                     android:id="@+id/checkbox_black_tie"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="9dp"
-                    android:text="@string/black_tie"/>
+                    android:text="@string/black_tie"
+                    android:textSize="12sp"/>
 
             </LinearLayout>
 
@@ -238,21 +246,13 @@
                     android:id="@+id/checkbox_business_casual"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/business_casual"/>
+                    android:text="@string/business_casual"
+                    android:textSize="12sp"/>
 
             </LinearLayout>
 
         </LinearLayout>
 
     </LinearLayout>
-
-    <Button
-        android:id="@+id/save_item"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="25dp"
-        android:layout_gravity="center"
-        android:text="@string/save"
-        android:textSize="20sp"/>
 
 </LinearLayout>

@@ -1,9 +1,12 @@
 package com.hackathon.dealeron.clozet;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -26,28 +29,28 @@ public class FullInventoryActivity extends AppCompatActivity {
   private ImageView headwearItem;
   private ImageButton headwearLeft;
   private ImageButton headwearRight;
-  private int currenHeadwearPosition;
+  private int currentHeadwearPosition;
   //
   private TextView topTitle;
   private LinearLayout topSelector;
   private ImageView topItem;
   private ImageButton topLeft;
   private ImageButton topRight;
-  private int currenTopPosition;
+  private int currentTopPosition;
   //
   private TextView bottomTitle;
   private LinearLayout bottomSelector;
   private ImageView bottomItem;
   private ImageButton bottomLeft;
   private ImageButton bottomRight;
-  private int currenBottomPosition;
+  private int currentBottomPosition;
   //
   private TextView footwearTitle;
   private LinearLayout footwearSelector;
   private ImageView footwearItem;
   private ImageButton footwearLeft;
   private ImageButton footwearRight;
-  private int currenFootwearPosition;
+  private int currentFootwearPosition;
   //
   private FullInventory inventory;
 
@@ -62,14 +65,34 @@ public class FullInventoryActivity extends AppCompatActivity {
 
     inventory = new FullInventory();
 
-    InitializeHeadwearSection();
-    InitializeTopSection();
-    InitializeBottomSection();
-    InitializeFootwearSection();
+    AlertDialog.Builder builder = new AlertDialog.Builder(this);
+    LayoutInflater inflater = LayoutInflater.from(FullInventoryActivity.this);
+    View settingsDialog = inflater.inflate(R.layout.customize_clothes, null);
+
+    builder.setView(R.layout.customize_clothes)
+           .setTitle(R.string.customize_item)
+           .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+             @Override
+             public void onClick(DialogInterface dialog, int which) {
+               dialog.dismiss();
+             }
+           })
+           .setPositiveButton(R.string.save, new DialogInterface.OnClickListener() {
+             @Override
+             public void onClick(DialogInterface dialog, int which) {
+
+             }
+           });
+
+    InitializeHeadwearSection(builder.create(), settingsDialog);
+    InitializeTopSection(builder.create(), settingsDialog);
+    InitializeBottomSection(builder.create(), settingsDialog);
+    InitializeFootwearSection(builder.create(), settingsDialog);
   }
 
-  private void InitializeHeadwearSection(){
-    currenHeadwearPosition = 0;
+  private void InitializeHeadwearSection(final AlertDialog dialog, View settingsDialog){
+    final ImageView dialogImage = (ImageView)settingsDialog.findViewById(R.id.custom_clothes_image);
+    currentHeadwearPosition = 0;
     headwearSelector = (LinearLayout)findViewById(R.id.headwear_selector);
     headwearItem = (ImageView)findViewById(R.id.headwear_item);
 
@@ -94,13 +117,13 @@ public class FullInventoryActivity extends AppCompatActivity {
     headwearRight.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-        if (currenHeadwearPosition < inventory.HEADWEAR_TYPES.size() - 1){
-          currenHeadwearPosition++;
+        if (currentHeadwearPosition < inventory.HEADWEAR_TYPES.size() - 1){
+          currentHeadwearPosition++;
         }
         else{
-          currenHeadwearPosition = 0;
+          currentHeadwearPosition = 0;
         }
-        headwearItem.setImageDrawable(GetHeadwearImage(inventory.HEADWEAR_TYPES.get(currenHeadwearPosition)));
+        headwearItem.setImageDrawable(GetHeadwearImage(inventory.HEADWEAR_TYPES.get(currentHeadwearPosition)));
       }
     });
 
@@ -108,13 +131,22 @@ public class FullInventoryActivity extends AppCompatActivity {
     headwearLeft.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-        if (currenHeadwearPosition > 0){
-          currenHeadwearPosition--;
+        if (currentHeadwearPosition > 0){
+          currentHeadwearPosition--;
         }
         else{
-          currenHeadwearPosition = inventory.HEADWEAR_TYPES.size() - 1;
+          currentHeadwearPosition = inventory.HEADWEAR_TYPES.size() - 1;
         }
-        headwearItem.setImageDrawable(GetHeadwearImage(inventory.HEADWEAR_TYPES.get(currenHeadwearPosition)));
+        headwearItem.setImageDrawable(GetHeadwearImage(inventory.HEADWEAR_TYPES.get(currentHeadwearPosition)));
+      }
+    });
+
+    headwearItem.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        Drawable drawable = ((ImageView)v).getDrawable();
+        dialogImage.setImageDrawable(((ImageView)v).getDrawable());
+        dialog.show();
       }
     });
   }
@@ -130,8 +162,8 @@ public class FullInventoryActivity extends AppCompatActivity {
     }
   }
 
-  private void InitializeTopSection(){
-    currenTopPosition = 0;
+  private void InitializeTopSection(AlertDialog dialog, View settingsDialog){
+    currentTopPosition = 0;
     topSelector = (LinearLayout)findViewById(R.id.top_selector);
     topItem = (ImageView)findViewById(R.id.top_item);
 
@@ -156,13 +188,13 @@ public class FullInventoryActivity extends AppCompatActivity {
     topRight.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-        if (currenTopPosition < inventory.TOP_TYPES.size() - 1){
-          currenTopPosition++;
+        if (currentTopPosition < inventory.TOP_TYPES.size() - 1){
+          currentTopPosition++;
         }
         else{
-          currenTopPosition = 0;
+          currentTopPosition = 0;
         }
-        topItem.setImageDrawable(GetTopImage(inventory.TOP_TYPES.get(currenTopPosition)));
+        topItem.setImageDrawable(GetTopImage(inventory.TOP_TYPES.get(currentTopPosition)));
       }
     });
 
@@ -170,13 +202,13 @@ public class FullInventoryActivity extends AppCompatActivity {
     topLeft.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-        if (currenTopPosition > 0){
-          currenTopPosition--;
+        if (currentTopPosition > 0){
+          currentTopPosition--;
         }
         else{
-          currenTopPosition = inventory.TOP_TYPES.size() - 1;
+          currentTopPosition = inventory.TOP_TYPES.size() - 1;
         }
-        topItem.setImageDrawable(GetTopImage(inventory.TOP_TYPES.get(currenTopPosition)));
+        topItem.setImageDrawable(GetTopImage(inventory.TOP_TYPES.get(currentTopPosition)));
       }
     });
   }
@@ -188,8 +220,8 @@ public class FullInventoryActivity extends AppCompatActivity {
     }
   }
 
-  private void InitializeBottomSection(){
-    currenBottomPosition = 0;
+  private void InitializeBottomSection(AlertDialog dialog, View settingsDialog){
+    currentBottomPosition = 0;
     bottomSelector = (LinearLayout)findViewById(R.id.bottom_selector);
     bottomItem = (ImageView)findViewById(R.id.bottom_item);
 
@@ -214,13 +246,13 @@ public class FullInventoryActivity extends AppCompatActivity {
     bottomRight.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-        if (currenBottomPosition < inventory.BOTTOM_TYPES.size() - 1){
-          currenBottomPosition++;
+        if (currentBottomPosition < inventory.BOTTOM_TYPES.size() - 1){
+          currentBottomPosition++;
         }
         else{
-          currenBottomPosition = 0;
+          currentBottomPosition = 0;
         }
-        bottomItem.setImageDrawable(GetBottomImage(inventory.BOTTOM_TYPES.get(currenBottomPosition)));
+        bottomItem.setImageDrawable(GetBottomImage(inventory.BOTTOM_TYPES.get(currentBottomPosition)));
       }
     });
 
@@ -228,13 +260,13 @@ public class FullInventoryActivity extends AppCompatActivity {
     bottomLeft.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-        if (currenBottomPosition > 0){
-          currenBottomPosition--;
+        if (currentBottomPosition > 0){
+          currentBottomPosition--;
         }
         else{
-          currenBottomPosition = inventory.BOTTOM_TYPES.size() - 1;
+          currentBottomPosition = inventory.BOTTOM_TYPES.size() - 1;
         }
-        bottomItem.setImageDrawable(GetBottomImage(inventory.BOTTOM_TYPES.get(currenBottomPosition)));
+        bottomItem.setImageDrawable(GetBottomImage(inventory.BOTTOM_TYPES.get(currentBottomPosition)));
       }
     });
   }
@@ -246,8 +278,8 @@ public class FullInventoryActivity extends AppCompatActivity {
     }
   }
 
-  private void InitializeFootwearSection(){
-    currenFootwearPosition = 0;
+  private void InitializeFootwearSection(AlertDialog dialog, View settingsDialog){
+    currentFootwearPosition = 0;
     footwearSelector = (LinearLayout)findViewById(R.id.footwear_selector);
     footwearItem = (ImageView)findViewById(R.id.footwear_item);
 
@@ -272,13 +304,13 @@ public class FullInventoryActivity extends AppCompatActivity {
     footwearRight.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-        if (currenFootwearPosition < inventory.FOOTWEAR_TYPES.size() - 1){
-          currenFootwearPosition++;
+        if (currentFootwearPosition < inventory.FOOTWEAR_TYPES.size() - 1){
+          currentFootwearPosition++;
         }
         else{
-          currenFootwearPosition = 0;
+          currentFootwearPosition = 0;
         }
-        footwearItem.setImageDrawable(GetFootwearImage(inventory.FOOTWEAR_TYPES.get(currenFootwearPosition)));
+        footwearItem.setImageDrawable(GetFootwearImage(inventory.FOOTWEAR_TYPES.get(currentFootwearPosition)));
       }
     });
 
@@ -286,13 +318,13 @@ public class FullInventoryActivity extends AppCompatActivity {
     footwearLeft.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-        if (currenFootwearPosition > 0){
-          currenFootwearPosition--;
+        if (currentFootwearPosition > 0){
+          currentFootwearPosition--;
         }
         else{
-          currenFootwearPosition = inventory.FOOTWEAR_TYPES.size() - 1;
+          currentFootwearPosition = inventory.FOOTWEAR_TYPES.size() - 1;
         }
-        footwearItem.setImageDrawable(GetFootwearImage(inventory.FOOTWEAR_TYPES.get(currenFootwearPosition)));
+        footwearItem.setImageDrawable(GetFootwearImage(inventory.FOOTWEAR_TYPES.get(currentFootwearPosition)));
       }
     });
   }
