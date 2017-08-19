@@ -1,5 +1,8 @@
 package com.hackathon.dealeron.clozet;
 
+import android.content.Context;
+import android.graphics.drawable.Drawable;
+
 import com.hackathon.dealeron.clozet.Models.Bottoms.BottomType;
 import com.hackathon.dealeron.clozet.Models.Footwear.FootwearType;
 import com.hackathon.dealeron.clozet.Models.Headwear.HeadwearType;
@@ -26,15 +29,87 @@ public class FullInventory {
     populateFootwear();
   }
 
+  public Drawable GetHeadwearImage(Context context, HeadwearType type){
+    switch (type){
+      case BaseballCap:
+        return context.getResources().getDrawable(R.drawable.baseball_cap, null);
+      case Beenie:
+        return context.getResources().getDrawable(R.drawable.beenie_, null);
+      default:
+        return context.getResources().getDrawable(R.drawable.missing_icon, null);
+    }
+  }
+
+  public Drawable GetTopImage(Context context, TopType type){
+    switch (type){
+      case ShortSleeveTshirt:
+        return context.getResources().getDrawable(R.drawable.short_sleeve_tshirt, null);
+      case LongSleeveTshirt:
+        return context.getResources().getDrawable(R.drawable.long_sleeve_tshirt, null);
+      case ShortSleeveButtonUp:
+        return context.getResources().getDrawable(R.drawable.short_sleeve_buttonup, null);
+      case LongSleeveButtonUp:
+        return context.getResources().getDrawable(R.drawable.long_sleeve_buttonup, null);
+      case Dress:
+        return context.getResources().getDrawable(R.drawable.dress_, null);
+      case RainJacket:
+        return context.getResources().getDrawable(R.drawable.rain_jacket, null);
+      case Sweater:
+        return context.getResources().getDrawable(R.drawable.sweater_, null);
+      case WinterJacket:
+        return context.getResources().getDrawable(R.drawable.winter_jacket, null);
+      case SuitJacket:
+        return context.getResources().getDrawable(R.drawable.suit_jacket, null);
+      case TankTop:
+        return context.getResources().getDrawable(R.drawable.tank_top, null);
+      case Hoodie:
+        return context.getResources().getDrawable(R.drawable.hoodie_, null);
+      case LightJacket:
+        return context.getResources().getDrawable(R.drawable.light_jacket, null);
+      default:
+        return context.getResources().getDrawable(R.drawable.missing_icon, null);
+    }
+  }
+
+  public Drawable GetBottomImage(Context context, BottomType type){
+    switch (type){
+      case ShortPants:
+        return context.getResources().getDrawable(R.drawable.short_pants, null);
+      case LongPants:
+        return context.getResources().getDrawable(R.drawable.long_pants, null);
+      case ShortJeans:
+        return context.getResources().getDrawable(R.drawable.short_jeans, null);
+      case LongJeans:
+        return context.getResources().getDrawable(R.drawable.long_jeans, null);
+      case Skirt:
+        return context.getResources().getDrawable(R.drawable.skirt_, null);
+      default:
+        return context.getResources().getDrawable(R.drawable.missing_icon, null);
+    }
+  }
+
+  public Drawable GetFootwearImage(Context context, FootwearType type){
+    switch (type){
+      case Boots:
+        return context.getResources().getDrawable(R.drawable.boots_, null);
+      case HiTopSneakers:
+        return context.getResources().getDrawable(R.drawable.hitop_sneakers, null);
+      case LowTopSneakers:
+        return context.getResources().getDrawable(R.drawable.lowtop_sneakers, null);
+      case DressShoes:
+        return context.getResources().getDrawable(R.drawable.dress_shoes, null);
+      case FlipFlops:
+        return context.getResources().getDrawable(R.drawable.flip_flops, null);
+      case Heels:
+        return context.getResources().getDrawable(R.drawable.heels_, null);
+      default:
+        return context.getResources().getDrawable(R.drawable.missing_icon, null);
+    }
+  }
+
   private void populateHeadwear() {
     HEADWEAR_TYPES.add(HeadwearType.BaseballCap);
-    HEADWEAR_TYPES.add(HeadwearType.Bandana);
     HEADWEAR_TYPES.add(HeadwearType.Beenie);
-    HEADWEAR_TYPES.add(HeadwearType.CowboyHat);
-    HEADWEAR_TYPES.add(HeadwearType.Fedora);
-    HEADWEAR_TYPES.add(HeadwearType.Scarf);
-    HEADWEAR_TYPES.add(HeadwearType.SkiMask);
-    HEADWEAR_TYPES.add(HeadwearType.Snapback);
   }
 
   private void populateTops() {
@@ -42,7 +117,6 @@ public class FullInventory {
     TOP_TYPES.add(TopType.LightJacket);
     TOP_TYPES.add(TopType.LongSleeveButtonUp);
     TOP_TYPES.add(TopType.LongSleeveTshirt);
-    TOP_TYPES.add(TopType.NorthFaceJacket);
     TOP_TYPES.add(TopType.RainJacket);
     TOP_TYPES.add(TopType.ShortSleeveButtonUp);
     TOP_TYPES.add(TopType.ShortSleeveTshirt);
@@ -63,7 +137,6 @@ public class FullInventory {
     BOTTOM_TYPES.add(BottomType.ShortPants);
 
     if (Settings.GENDER == Gender.FEMALE) {
-      BOTTOM_TYPES.add(BottomType.Leggings);
       BOTTOM_TYPES.add(BottomType.Skirt);
     }
   }
@@ -74,12 +147,9 @@ public class FullInventory {
     FOOTWEAR_TYPES.add(FootwearType.FlipFlops);
     FOOTWEAR_TYPES.add(FootwearType.HiTopSneakers);
     FOOTWEAR_TYPES.add(FootwearType.LowTopSneakers);
-    FOOTWEAR_TYPES.add(FootwearType.Sandals);
 
     if (Settings.GENDER == Gender.FEMALE) {
-      FOOTWEAR_TYPES.add(FootwearType.Flats);
       FOOTWEAR_TYPES.add(FootwearType.Heels);
-      FOOTWEAR_TYPES.add(FootwearType.Uggs);
     }
   }
 }

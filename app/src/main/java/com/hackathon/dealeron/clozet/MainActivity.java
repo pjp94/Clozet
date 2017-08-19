@@ -3,6 +3,10 @@ package com.hackathon.dealeron.clozet;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffColorFilter;
+import android.graphics.drawable.Drawable;
 import android.support.annotation.IdRes;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -16,13 +20,23 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.RadioGroup;
 
 import com.hackathon.dealeron.clozet.Settings.Gender;
 import com.hackathon.dealeron.clozet.Settings.Settings;
 import com.hackathon.dealeron.clozet.Settings.TemperatureUnit;
 
+import java.util.Random;
+
 public class MainActivity extends AppCompatActivity {
+  private ImageView headwear;
+  private ImageView top;
+  private ImageView bottom;
+  private ImageView footwear;
+  private FullInventory inventory;
+  private ImageButton refresh;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -122,6 +136,46 @@ public class MainActivity extends AppCompatActivity {
     } else {
       initializeWeather();
     }
+
+    refresh = (ImageButton)findViewById(R.id.refresh);
+    refresh.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        Refresh();
+      }
+    });
+    InitializeOutfit();
+  }
+
+  private void InitializeOutfit() {
+    inventory = new FullInventory();
+    headwear = (ImageView)findViewById(R.id.headwear_item);
+    top = (ImageView)findViewById(R.id.top_item);
+    bottom = (ImageView)findViewById(R.id.bottom_item);
+    footwear = (ImageView)findViewById(R.id.footwear_item);
+    Refresh();
+  }
+
+  private void Refresh(){
+    Drawable headwearImage = inventory.GetHeadwearImage(getApplicationContext(), inventory.HEADWEAR_TYPES.get(randInt(inventory.HEADWEAR_TYPES.size())));
+    headwearImage.mutate().setColorFilter(new PorterDuffColorFilter(Color.rgb(randInt(255), randInt(255), randInt(255)), PorterDuff.Mode.MULTIPLY));
+    headwear.setImageDrawable(headwearImage);
+    Drawable topImage = inventory.GetTopImage(getApplicationContext(), inventory.TOP_TYPES.get(randInt(inventory.TOP_TYPES.size())));
+    topImage.mutate().setColorFilter(new PorterDuffColorFilter(Color.rgb(randInt(255), randInt(255), randInt(255)), PorterDuff.Mode.MULTIPLY));
+    top.setImageDrawable(topImage);
+    Drawable bottomImage = inventory.GetBottomImage(getApplicationContext(), inventory.BOTTOM_TYPES.get(randInt(inventory.BOTTOM_TYPES.size())));
+    bottomImage.mutate().setColorFilter(new PorterDuffColorFilter(Color.rgb(randInt(255), randInt(255), randInt(255)), PorterDuff.Mode.MULTIPLY));
+    bottom.setImageDrawable(bottomImage);
+    Drawable footwearImage = inventory.GetFootwearImage(getApplicationContext(), inventory.FOOTWEAR_TYPES.get(randInt(inventory.FOOTWEAR_TYPES.size())));
+    footwearImage.mutate().setColorFilter(new PorterDuffColorFilter(Color.rgb(randInt(255), randInt(255), randInt(255)), PorterDuff.Mode.MULTIPLY));
+    footwear.setImageDrawable(footwearImage);
+  }
+
+  public static int randInt(int max) {
+    Random rand;
+    rand = new Random();
+    int randomNum = rand.nextInt(max);
+    return randomNum;
   }
 
   @Override

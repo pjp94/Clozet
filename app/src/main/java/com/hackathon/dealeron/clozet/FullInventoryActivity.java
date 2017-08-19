@@ -75,19 +75,19 @@ public class FullInventoryActivity extends AppCompatActivity {
     View settingsDialog = inflater.inflate(R.layout.customize_clothes, null);
 
     builder.setView(R.layout.customize_clothes)
-           .setTitle(R.string.customize_item)
-           .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
-             @Override
-             public void onClick(DialogInterface dialog, int which) {
-               dialog.dismiss();
-             }
-           })
-           .setPositiveButton(R.string.save, new DialogInterface.OnClickListener() {
-             @Override
-             public void onClick(DialogInterface dialog, int which) {
+            .setTitle(R.string.customize_item)
+            .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+              @Override
+              public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+              }
+            })
+            .setPositiveButton(R.string.save, new DialogInterface.OnClickListener() {
+              @Override
+              public void onClick(DialogInterface dialog, int which) {
 
-             }
-           });
+              }
+            });
 
     InitializeHeadwearSection(builder.create(), settingsDialog);
     InitializeTopSection(builder.create(), settingsDialog);
@@ -114,7 +114,7 @@ public class FullInventoryActivity extends AppCompatActivity {
         }
         CloseOtherSelectors(headwearSelector);
         if(headwearItem.getDrawable() == null){
-          headwearItem.setImageDrawable(GetHeadwearImage(inventory.HEADWEAR_TYPES.get(0)));
+          headwearItem.setImageDrawable(inventory.GetHeadwearImage(getApplicationContext(), inventory.HEADWEAR_TYPES.get(0)));
         }
       }
 
@@ -130,7 +130,7 @@ public class FullInventoryActivity extends AppCompatActivity {
         else{
           currentHeadwearPosition = 0;
         }
-        headwearItem.setImageDrawable(GetHeadwearImage(inventory.HEADWEAR_TYPES.get(currentHeadwearPosition)));
+        headwearItem.setImageDrawable(inventory.GetHeadwearImage(getApplicationContext(), inventory.HEADWEAR_TYPES.get(currentHeadwearPosition)));
       }
     });
 
@@ -144,7 +144,7 @@ public class FullInventoryActivity extends AppCompatActivity {
         else{
           currentHeadwearPosition = inventory.HEADWEAR_TYPES.size() - 1;
         }
-        headwearItem.setImageDrawable(GetHeadwearImage(inventory.HEADWEAR_TYPES.get(currentHeadwearPosition)));
+        headwearItem.setImageDrawable(inventory.GetHeadwearImage(getApplicationContext(), inventory.HEADWEAR_TYPES.get(currentHeadwearPosition)));
       }
     });
 
@@ -156,23 +156,6 @@ public class FullInventoryActivity extends AppCompatActivity {
         dialog.show();
       }
     });
-  }
-
-  private Drawable GetHeadwearImage(HeadwearType type){
-    switch (type){
-      case BaseballCap:
-        return getResources().getDrawable(R.drawable.baseball_cap, null);
-      case Beenie:
-        return getResources().getDrawable(R.drawable.beenie_, null);
-      case Snapback:
-      case Bandana:
-      case CowboyHat:
-      case Fedora:
-      case SkiMask:
-      case Scarf:
-      default:
-        return getResources().getDrawable(R.drawable.missing_icon, null);
-    }
   }
 
   private void InitializeTopSection(AlertDialog dialog, View settingsDialog){
@@ -193,7 +176,7 @@ public class FullInventoryActivity extends AppCompatActivity {
         }
         CloseOtherSelectors(topSelector);
         if(topItem.getDrawable() == null){
-          topItem.setImageDrawable(GetTopImage(inventory.TOP_TYPES.get(0)));
+          topItem.setImageDrawable(inventory.GetTopImage(getApplicationContext(), inventory.TOP_TYPES.get(0)));
         }
       }
 
@@ -209,7 +192,7 @@ public class FullInventoryActivity extends AppCompatActivity {
         else{
           currentTopPosition = 0;
         }
-        topItem.setImageDrawable(GetTopImage(inventory.TOP_TYPES.get(currentTopPosition)));
+        topItem.setImageDrawable(inventory.GetTopImage(getApplicationContext(), inventory.TOP_TYPES.get(currentTopPosition)));
       }
     });
 
@@ -223,41 +206,9 @@ public class FullInventoryActivity extends AppCompatActivity {
         else{
           currentTopPosition = inventory.TOP_TYPES.size() - 1;
         }
-        topItem.setImageDrawable(GetTopImage(inventory.TOP_TYPES.get(currentTopPosition)));
+        topItem.setImageDrawable(inventory.GetTopImage(getApplicationContext(), inventory.TOP_TYPES.get(currentTopPosition)));
       }
     });
-  }
-
-  private Drawable GetTopImage(TopType type){
-    switch (type){
-      case ShortSleeveTshirt:
-        return getResources().getDrawable(R.drawable.short_sleeve_tshirt, null);
-      case LongSleeveTshirt:
-        return getResources().getDrawable(R.drawable.long_sleeve_tshirt, null);
-      case ShortSleeveButtonUp:
-        return getResources().getDrawable(R.drawable.short_sleeve_buttonup, null);
-      case LongSleeveButtonUp:
-        return getResources().getDrawable(R.drawable.long_sleeve_buttonup, null);
-      case Dress:
-        return getResources().getDrawable(R.drawable.dress_, null);
-      case RainJacket:
-        return getResources().getDrawable(R.drawable.rain_jacket, null);
-      case Sweater:
-        return getResources().getDrawable(R.drawable.sweater_, null);
-      case WinterJacket:
-        return getResources().getDrawable(R.drawable.winter_jacket, null);
-      case SuitJacket:
-        return getResources().getDrawable(R.drawable.suit_jacket, null);
-      case TankTop:
-        return getResources().getDrawable(R.drawable.tank_top, null);
-      case Hoodie:
-        return getResources().getDrawable(R.drawable.hoodie_, null);
-      case LightJacket:
-        return getResources().getDrawable(R.drawable.light_jacket, null);
-      case NorthFaceJacket:
-      default:
-        return getResources().getDrawable(R.drawable.missing_icon, null);
-    }
   }
 
   private void InitializeBottomSection(AlertDialog dialog, View settingsDialog){
@@ -278,7 +229,7 @@ public class FullInventoryActivity extends AppCompatActivity {
         }
         CloseOtherSelectors(bottomSelector);
         if(bottomItem.getDrawable() == null){
-          bottomItem.setImageDrawable(GetBottomImage(inventory.BOTTOM_TYPES.get(0)));
+          bottomItem.setImageDrawable(inventory.GetBottomImage(getApplicationContext(), inventory.BOTTOM_TYPES.get(0)));
         }
       }
 
@@ -294,7 +245,7 @@ public class FullInventoryActivity extends AppCompatActivity {
         else{
           currentBottomPosition = 0;
         }
-        bottomItem.setImageDrawable(GetBottomImage(inventory.BOTTOM_TYPES.get(currentBottomPosition)));
+        bottomItem.setImageDrawable(inventory.GetBottomImage(getApplicationContext(), inventory.BOTTOM_TYPES.get(currentBottomPosition)));
       }
     });
 
@@ -308,27 +259,9 @@ public class FullInventoryActivity extends AppCompatActivity {
         else{
           currentBottomPosition = inventory.BOTTOM_TYPES.size() - 1;
         }
-        bottomItem.setImageDrawable(GetBottomImage(inventory.BOTTOM_TYPES.get(currentBottomPosition)));
+        bottomItem.setImageDrawable(inventory.GetBottomImage(getApplicationContext(), inventory.BOTTOM_TYPES.get(currentBottomPosition)));
       }
     });
-  }
-
-  private Drawable GetBottomImage(BottomType type){
-    switch (type){
-      case ShortPants:
-        return getResources().getDrawable(R.drawable.short_pants, null);
-      case LongPants:
-        return getResources().getDrawable(R.drawable.long_pants, null);
-      case ShortJeans:
-        return getResources().getDrawable(R.drawable.short_jeans, null);
-      case LongJeans:
-        return getResources().getDrawable(R.drawable.long_jeans, null);
-      case Skirt:
-        return getResources().getDrawable(R.drawable.skirt_, null);
-      case Leggings:
-      default:
-        return getResources().getDrawable(R.drawable.missing_icon, null);
-    }
   }
 
   private void InitializeFootwearSection(AlertDialog dialog, View settingsDialog){
@@ -349,7 +282,7 @@ public class FullInventoryActivity extends AppCompatActivity {
         }
         CloseOtherSelectors(footwearSelector);
         if(footwearItem.getDrawable() == null){
-          footwearItem.setImageDrawable(GetFootwearImage(inventory.FOOTWEAR_TYPES.get(0)));
+          footwearItem.setImageDrawable(inventory.GetFootwearImage(getApplicationContext(), inventory.FOOTWEAR_TYPES.get(0)));
         }
       }
 
@@ -365,7 +298,7 @@ public class FullInventoryActivity extends AppCompatActivity {
         else{
           currentFootwearPosition = 0;
         }
-        footwearItem.setImageDrawable(GetFootwearImage(inventory.FOOTWEAR_TYPES.get(currentFootwearPosition)));
+        footwearItem.setImageDrawable(inventory.GetFootwearImage(getApplicationContext(), inventory.FOOTWEAR_TYPES.get(currentFootwearPosition)));
       }
     });
 
@@ -379,31 +312,9 @@ public class FullInventoryActivity extends AppCompatActivity {
         else{
           currentFootwearPosition = inventory.FOOTWEAR_TYPES.size() - 1;
         }
-        footwearItem.setImageDrawable(GetFootwearImage(inventory.FOOTWEAR_TYPES.get(currentFootwearPosition)));
+        footwearItem.setImageDrawable(inventory.GetFootwearImage(getApplicationContext(), inventory.FOOTWEAR_TYPES.get(currentFootwearPosition)));
       }
     });
-  }
-
-  private Drawable GetFootwearImage(FootwearType type){
-    switch (type){
-      case Boots:
-        return getResources().getDrawable(R.drawable.boots_, null);
-      case HiTopSneakers:
-        return getResources().getDrawable(R.drawable.hitop_sneakers, null);
-      case LowTopSneakers:
-        return getResources().getDrawable(R.drawable.lowtop_sneakers, null);
-      case DressShoes:
-        return getResources().getDrawable(R.drawable.dress_shoes, null);
-      case FlipFlops:
-        return getResources().getDrawable(R.drawable.flip_flops, null);
-      case Heels:
-        return getResources().getDrawable(R.drawable.heels_, null);
-      case Sandals:
-      case Flats:
-      case Uggs:
-      default:
-        return getResources().getDrawable(R.drawable.missing_icon, null);
-    }
   }
 
   private void CloseOtherSelectors(LinearLayout dontClose) {
