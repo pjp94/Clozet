@@ -3,12 +3,9 @@ package com.hackathon.dealeron.clozet;
 import android.app.Activity;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
-import android.graphics.drawable.Icon;
 import android.os.AsyncTask;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.google.gson.Gson;
 
 import org.json.JSONArray;
 import org.json.JSONException;

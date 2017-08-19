@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:layout_margin="15dp"
+              android:focusable="true"
+              android:focusableInTouchMode="true">
+
+    <RadioGroup
+        android:id="@+id/radio_temperature"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp">
+
+        <TextView
+            android:id="@+id/radio_temperature_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/choose_unit"
+            android:textSize="16sp"/>
+
+        <RadioButton
+            android:id="@+id/radio_button_fahrenheit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:text="@string/fahrenheit"/>
+
+        <RadioButton
+            android:id="@+id/radio_button_celsius"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:text="@string/celsius"/>
+
+    </RadioGroup>
+
+    <RadioGroup
+        android:id="@+id/radio_gender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp">
+
+        <TextView
+            android:id="@+id/radio_gender_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/choose_gender"
+            android:textSize="16sp"/>
+
+        <RadioButton
+            android:id="@+id/radio_button_male"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:text="@string/male"/>
+
+        <RadioButton
+            android:id="@+id/radio_button_female"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:text="@string/female"/>
+
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/enter_zipcode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:text="@string/enter_zipcode"
+        android:textSize="16sp"/>
+
+    <EditText
+        android:id="@+id/user_zipcode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="75dp"
+        android:layout_marginBottom="15dp"
+        android:inputType="number"
+        android:hint="@string/hint_zipcode"/>
+
+    <Button
+        android:id="@+id/button_initial_settings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="15dp"
+        android:text="@string/initial_settings_done"
+        android:textSize="20sp"
+        android:enabled="false"/>
+
+</LinearLayout>

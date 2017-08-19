@@ -1,4 +1,15 @@
 <resources>
     <string name="app_name">Clozet</string>
     <string name="weather">weather</string>
+    <string name="set_up">Initial Settings</string>
+    <string name="change_settings">These can be changed any time in Settings</string>
+    <string name="choose_unit">Choose your preferred temperature unit:</string>
+    <string name="choose_gender">Choose your gender:</string>
+    <string name="enter_zipcode">Enter your zip code:</string>
+    <string name="hint_zipcode">Enter zip code</string>
+    <string name="fahrenheit">Fahrenheit</string>
+    <string name="celsius">Celsius</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="initial_settings_done">All Set!</string>
 </resources>
