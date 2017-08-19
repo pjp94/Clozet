@@ -57,8 +57,7 @@ public class MainActivity extends AppCompatActivity {
       Settings.INITIAL_SETUP_COMPLETE = true;
     }
 
-    if (true) {
-      //if (!Settings.isSet()) {
+    if (!Settings.isSet()) {
       AlertDialog.Builder settingsBuilder = new AlertDialog.Builder(MainActivity.this);
       LayoutInflater inflater = LayoutInflater.from(MainActivity.this);
       View settingsDialog = inflater.inflate(R.layout.settings_dialog, null);
