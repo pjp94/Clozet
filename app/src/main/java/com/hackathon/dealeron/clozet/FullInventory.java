@@ -15,9 +15,9 @@ import java.util.Set;
 public class FullInventory {
 
   public static final List<HeadwearType> HEADWEAR_TYPES = new ArrayList<>();
-  public static final Set<TopType> TOP_TYPES = new HashSet<>();
-  public static final Set<BottomType> BOTTOM_TYPES = new HashSet<>();
-  public static final Set<FootwearType> FOOTWEAR_TYPES = new HashSet<>();
+  public static final List<TopType> TOP_TYPES = new ArrayList<>();
+  public static final List<BottomType> BOTTOM_TYPES = new ArrayList<>();
+  public static final List<FootwearType> FOOTWEAR_TYPES = new ArrayList<>();
 
   public FullInventory() {
     populateHeadwear();
