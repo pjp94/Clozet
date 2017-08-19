@@ -17,4 +17,19 @@ public class TopPiece extends ClothingPiece {
         super(color, dressTypes, weatherType);
         this.type = type;
     }
+    @Override
+    public boolean equals(Object obj) {
+        if (this.getClass() != obj.getClass()) {
+            return false;
+        }
+        TopPiece other =(TopPiece)obj;
+        if (this.type != other.type) {
+            return false;
+        }
+        return super.equals(other);
+    }
+    @Override
+    public int hashCode() {
+        return 0;
+    }
 }

@@ -28,32 +28,32 @@ public class Wardrobe {
         this.bottoms = bottoms;
         this.footwear = footwear;
     }
-    public void AddHeadwearPiece(HeadwearPiece piece){
-        headwear.add(piece);
+    public boolean AddHeadwearPiece(HeadwearPiece piece){
+        return headwear.add(piece);
     }
     public void AddHeadwearPieces(HashSet<HeadwearPiece> pieces){
         for (HeadwearPiece piece : pieces) {
             AddHeadwearPiece(piece);
         }
     }
-    public void AddTopPiece(TopPiece piece){
-        tops.add(piece);
+    public boolean AddTopPiece(TopPiece piece){
+        return tops.add(piece);
     }
     public void AddTopPieces(HashSet<TopPiece> pieces){
         for (TopPiece piece : pieces) {
             AddTopPiece(piece);
         }
     }
-    public void AddBottomPiece(BottomPiece piece){
-        bottoms.add(piece);
+    public boolean AddBottomPiece(BottomPiece piece){
+        return bottoms.add(piece);
     }
     public void AddBottomPieces(HashSet<BottomPiece> pieces){
         for (BottomPiece piece : pieces) {
             AddBottomPiece(piece);
         }
     }
-    public void AddFootwearPiece(FootwearPiece piece){
-        footwear.add(piece);
+    public boolean AddFootwearPiece(FootwearPiece piece){
+        return footwear.add(piece);
     }
     public void AddFootwearPieces(HashSet<FootwearPiece> pieces){
         for (FootwearPiece piece : pieces) {

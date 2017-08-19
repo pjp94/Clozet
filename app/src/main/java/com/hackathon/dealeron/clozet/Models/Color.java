@@ -5,4 +5,15 @@ package com.hackathon.dealeron.clozet.Models;
  */
 
 public class Color {
+    @Override
+    public boolean equals(Object obj) {
+        if (this.getClass() != obj.getClass()) {
+            return false;
+        }
+        Color other =(Color)obj;
+        if (false) {
+            return false;
+        }
+        return true;
+    }
 }
