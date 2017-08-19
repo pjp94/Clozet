@@ -57,7 +57,8 @@ public class MainActivity extends AppCompatActivity {
       Settings.INITIAL_SETUP_COMPLETE = true;
     }
 
-    if (!Settings.isSet()) {
+    if (true) {
+      //if (!Settings.isSet()) {
       AlertDialog.Builder settingsBuilder = new AlertDialog.Builder(MainActivity.this);
       LayoutInflater inflater = LayoutInflater.from(MainActivity.this);
       View settingsDialog = inflater.inflate(R.layout.settings_dialog, null);
@@ -144,7 +145,9 @@ public class MainActivity extends AppCompatActivity {
         Refresh();
       }
     });
-    InitializeOutfit();
+    if(Settings.isSet()) {
+      InitializeOutfit();
+    }
   }
 
   private void InitializeOutfit() {
