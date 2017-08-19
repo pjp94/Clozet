@@ -22,6 +22,9 @@ import com.hackathon.dealeron.clozet.Models.Headwear.HeadwearType;
 import com.hackathon.dealeron.clozet.Models.Tops.TopType;
 import com.hackathon.dealeron.clozet.Settings.Settings;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class FullInventoryActivity extends AppCompatActivity {
 
   private TextView headwearTitle;
@@ -53,6 +56,7 @@ public class FullInventoryActivity extends AppCompatActivity {
   private int currentFootwearPosition;
   //
   private FullInventory inventory;
+  private List<LinearLayout> allSelectors;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +68,7 @@ public class FullInventoryActivity extends AppCompatActivity {
     weatherRetriever.execute(Settings.ZIP_CODE);
 
     inventory = new FullInventory();
+    allSelectors = new ArrayList<>();
 
     AlertDialog.Builder builder = new AlertDialog.Builder(this);
     LayoutInflater inflater = LayoutInflater.from(FullInventoryActivity.this);
@@ -94,6 +99,7 @@ public class FullInventoryActivity extends AppCompatActivity {
     final ImageView dialogImage = (ImageView)settingsDialog.findViewById(R.id.custom_clothes_image);
     currentHeadwearPosition = 0;
     headwearSelector = (LinearLayout)findViewById(R.id.headwear_selector);
+    allSelectors.add(headwearSelector);
     headwearItem = (ImageView)findViewById(R.id.headwear_item);
 
     headwearTitle = (TextView)findViewById(R.id.collapse_headwear);
@@ -106,6 +112,7 @@ public class FullInventoryActivity extends AppCompatActivity {
         else{
           headwearSelector.setVisibility(View.GONE);
         }
+        CloseOtherSelectors(headwearSelector);
         if(headwearItem.getDrawable() == null){
           headwearItem.setImageDrawable(GetHeadwearImage(inventory.HEADWEAR_TYPES.get(0)));
         }
@@ -157,14 +164,21 @@ public class FullInventoryActivity extends AppCompatActivity {
         return getResources().getDrawable(R.drawable.baseball_cap, null);
       case Beenie:
         return getResources().getDrawable(R.drawable.beenie_, null);
+      case Snapback:
+      case Bandana:
+      case CowboyHat:
+      case Fedora:
+      case SkiMask:
+      case Scarf:
       default:
-        return null;
+        return getResources().getDrawable(R.drawable.missing_icon, null);
     }
   }
 
   private void InitializeTopSection(AlertDialog dialog, View settingsDialog){
     currentTopPosition = 0;
     topSelector = (LinearLayout)findViewById(R.id.top_selector);
+    allSelectors.add(topSelector);
     topItem = (ImageView)findViewById(R.id.top_item);
 
     topTitle = (TextView)findViewById(R.id.collapse_top);
@@ -177,6 +191,7 @@ public class FullInventoryActivity extends AppCompatActivity {
         else{
           topSelector.setVisibility(View.GONE);
         }
+        CloseOtherSelectors(topSelector);
         if(topItem.getDrawable() == null){
           topItem.setImageDrawable(GetTopImage(inventory.TOP_TYPES.get(0)));
         }
@@ -215,14 +230,40 @@ public class FullInventoryActivity extends AppCompatActivity {
 
   private Drawable GetTopImage(TopType type){
     switch (type){
+      case ShortSleeveTshirt:
+        return getResources().getDrawable(R.drawable.short_sleeve_tshirt, null);
+      case LongSleeveTshirt:
+        return getResources().getDrawable(R.drawable.long_sleeve_tshirt, null);
+      case ShortSleeveButtonUp:
+        return getResources().getDrawable(R.drawable.short_sleeve_buttonup, null);
+      case LongSleeveButtonUp:
+        return getResources().getDrawable(R.drawable.long_sleeve_buttonup, null);
+      case Dress:
+        return getResources().getDrawable(R.drawable.dress_, null);
+      case RainJacket:
+        return getResources().getDrawable(R.drawable.rain_jacket, null);
+      case Sweater:
+        return getResources().getDrawable(R.drawable.sweater_, null);
+      case WinterJacket:
+        return getResources().getDrawable(R.drawable.winter_jacket, null);
+      case SuitJacket:
+        return getResources().getDrawable(R.drawable.suit_jacket, null);
+      case TankTop:
+        return getResources().getDrawable(R.drawable.tank_top, null);
+      case Hoodie:
+        return getResources().getDrawable(R.drawable.hoodie_, null);
+      case LightJacket:
+        return getResources().getDrawable(R.drawable.light_jacket, null);
+      case NorthFaceJacket:
       default:
-        return null;
+        return getResources().getDrawable(R.drawable.missing_icon, null);
     }
   }
 
   private void InitializeBottomSection(AlertDialog dialog, View settingsDialog){
     currentBottomPosition = 0;
     bottomSelector = (LinearLayout)findViewById(R.id.bottom_selector);
+    allSelectors.add(bottomSelector);
     bottomItem = (ImageView)findViewById(R.id.bottom_item);
 
     bottomTitle = (TextView)findViewById(R.id.collapse_bottom);
@@ -235,6 +276,7 @@ public class FullInventoryActivity extends AppCompatActivity {
         else{
           bottomSelector.setVisibility(View.GONE);
         }
+        CloseOtherSelectors(bottomSelector);
         if(bottomItem.getDrawable() == null){
           bottomItem.setImageDrawable(GetBottomImage(inventory.BOTTOM_TYPES.get(0)));
         }
@@ -273,14 +315,26 @@ public class FullInventoryActivity extends AppCompatActivity {
 
   private Drawable GetBottomImage(BottomType type){
     switch (type){
+      case ShortPants:
+        return getResources().getDrawable(R.drawable.short_pants, null);
+      case LongPants:
+        return getResources().getDrawable(R.drawable.long_pants, null);
+      case ShortJeans:
+        return getResources().getDrawable(R.drawable.short_jeans, null);
+      case LongJeans:
+        return getResources().getDrawable(R.drawable.long_jeans, null);
+      case Skirt:
+        return getResources().getDrawable(R.drawable.skirt_, null);
+      case Leggings:
       default:
-        return null;
+        return getResources().getDrawable(R.drawable.missing_icon, null);
     }
   }
 
   private void InitializeFootwearSection(AlertDialog dialog, View settingsDialog){
     currentFootwearPosition = 0;
     footwearSelector = (LinearLayout)findViewById(R.id.footwear_selector);
+    allSelectors.add(footwearSelector);
     footwearItem = (ImageView)findViewById(R.id.footwear_item);
 
     footwearTitle = (TextView)findViewById(R.id.collapse_footwear);
@@ -293,6 +347,7 @@ public class FullInventoryActivity extends AppCompatActivity {
         else{
           footwearSelector.setVisibility(View.GONE);
         }
+        CloseOtherSelectors(footwearSelector);
         if(footwearItem.getDrawable() == null){
           footwearItem.setImageDrawable(GetFootwearImage(inventory.FOOTWEAR_TYPES.get(0)));
         }
@@ -331,8 +386,31 @@ public class FullInventoryActivity extends AppCompatActivity {
 
   private Drawable GetFootwearImage(FootwearType type){
     switch (type){
+      case Boots:
+        return getResources().getDrawable(R.drawable.boots_, null);
+      case HiTopSneakers:
+        return getResources().getDrawable(R.drawable.hitop_sneakers, null);
+      case LowTopSneakers:
+        return getResources().getDrawable(R.drawable.lowtop_sneakers, null);
+      case DressShoes:
+        return getResources().getDrawable(R.drawable.dress_shoes, null);
+      case FlipFlops:
+        return getResources().getDrawable(R.drawable.flip_flops, null);
+      case Heels:
+        return getResources().getDrawable(R.drawable.heels_, null);
+      case Sandals:
+      case Flats:
+      case Uggs:
       default:
-        return null;
+        return getResources().getDrawable(R.drawable.missing_icon, null);
+    }
+  }
+
+  private void CloseOtherSelectors(LinearLayout dontClose) {
+    for(LinearLayout selector : allSelectors){
+      if (!selector.equals(dontClose)){
+        selector.setVisibility(View.GONE);
+      }
     }
   }
 
