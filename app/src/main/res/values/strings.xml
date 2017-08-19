@@ -32,4 +32,22 @@
     <string name="tops">Tops</string>
     <string name="bottoms">Bottoms</string>
     <string name="footwear">Footwear</string>
+
+    <string name="set_weather_type">Set weather types:</string>
+    <string name="cool">Cool</string>
+    <string name="cold">Cold</string>
+    <string name="warm">Warm</string>
+    <string name="hot">Hot</string>
+    <string name="rainy">Rainy</string>
+    <string name="snowy">Snowy</string>
+
+    <string name="set_occasion">Set occasions:</string>
+    <string name="casual">Casual</string>
+    <string name="business_casual">Business Casual</string>
+    <string name="business">Business</string>
+    <string name="formal">Formal</string>
+    <string name="black_tie">Black Tie</string>
+
+    <string name="pick_color">Pick a color:</string>
+    <string name="save">Save</string>
 </resources>
