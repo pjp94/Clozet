@@ -12,4 +12,19 @@
     <string name="male">Male</string>
     <string name="female">Female</string>
     <string name="initial_settings_done">All Set!</string>
+
+    <!-- Menu Items -->
+    <string name="home">Home</string>
+    <string name="wardrobe">Wardrobe</string>
+    <string name="inventory">Full Inventory</string>
+    <string name="settings">Settings</string>
+
+    <!-- SharedPreferences Keys -->
+    <string name="saved_temp_unit">SAVED_TEMP_UNIT</string>
+    <string name="saved_gender">SAVED_GENDER</string>
+    <string name="saved_zipcode">SAVED_ZIPCODE</string>
+    <string name="saved_value_cool">SAVED_VALUE_COOL</string>
+    <string name="saved_value_cold">SAVED_VALUE_COLD</string>
+    <string name="saved_value_warm">SAVED_VALUE_WARM</string>
+    <string name="saved_value_hot">SAVED_VALUE_HOT</string>
 </resources>

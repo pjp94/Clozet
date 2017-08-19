@@ -1,7 +1,8 @@
 package com.hackathon.dealeron.clozet;
 
-import android.app.ActionBar;
-import android.app.Dialog;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.annotation.IdRes;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +10,9 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -24,8 +28,21 @@ public class MainActivity extends AppCompatActivity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
+    getSupportActionBar().setDisplayShowTitleEnabled(false);
 
-    if (!Settings.IS_SET) {
+    if (!Settings.INITIAL_SETUP_COMPLETE) {
+      SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
+      int defaultValue = 0;
+      int tempUnit = sharedPref.getInt(getString(R.string.saved_temp_unit), defaultValue);
+      int gender = sharedPref.getInt(getString(R.string.saved_gender), defaultValue);
+      int zipCode = sharedPref.getInt(getString(R.string.saved_zipcode), defaultValue);
+
+      Settings.UNIT = tempUnit == 0 ? TemperatureUnit.FAHRENHEIT : TemperatureUnit.CELCIUS;
+      Settings.GENDER = gender == 0 ? Gender.MALE : Gender.FEMALE;
+      Settings.ZIP_CODE = zipCode;
+    }
+
+    if (!Settings.isSet()) {
       AlertDialog.Builder settingsBuilder = new AlertDialog.Builder(MainActivity.this);
       LayoutInflater inflater = LayoutInflater.from(MainActivity.this);
       View settingsDialog = inflater.inflate(R.layout.settings_dialog, null);
@@ -81,28 +98,73 @@ public class MainActivity extends AppCompatActivity {
           int genderId = genderGroup.getCheckedRadioButtonId();
           int zipCode = Integer.parseInt(zipCodeText.getText().toString());
 
-          TemperatureUnit unit  = tempId == 0
+          TemperatureUnit unit  =
+                  tempId == R.id.radio_button_fahrenheit
                   ? TemperatureUnit.FAHRENHEIT
                   : TemperatureUnit.CELCIUS;
 
-          Gender gender = genderId == 0
+          Gender gender =
+                  genderId == R.id.radio_button_male
                   ? Gender.MALE
                   : Gender.FEMALE;
 
           Settings.setSettings(unit, gender, zipCode);
-          Settings.IS_SET = true;
+          Settings.INITIAL_SETUP_COMPLETE = true;
 
           settings.dismiss();
 
-          WeatherRetriever weatherRetriever = new WeatherRetriever(MainActivity.this);
-          weatherRetriever.execute(20855);
+          initializeWeather();
         }
       });
 
       settings.show();
+    } else {
+      initializeWeather();
+    }
+  }
+
+  @Override
+  public boolean onCreateOptionsMenu(Menu menu) {
+    MenuInflater inflater = getMenuInflater();
+    inflater.inflate(R.menu.menu, menu);
+    return true;
+  }
+
+  @Override
+  public boolean onOptionsItemSelected(MenuItem item) {
+    boolean selected;
+    Intent intent;
+
+    switch (item.getItemId()) {
+      case R.id.menu_settings:
+        intent = new Intent(MainActivity.this, SettingsActivity.class);
+        startActivity(intent);
+        selected = true;
+        break;
+      default:
+        selected = super.onOptionsItemSelected(item);
     }
 
+    return selected;
+  }
 
+  @Override
+  public void onPause() {
+    SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
+    SharedPreferences.Editor editor = sharedPref.edit();
+
+    editor.clear();
+    editor.putInt(getString(R.string.saved_temp_unit), Settings.UNIT == TemperatureUnit.FAHRENHEIT ? 0 : 1);
+    editor.putInt(getString(R.string.saved_gender), Settings.GENDER == Gender.MALE ? 0 : 1);
+    editor.putInt(getString(R.string.saved_zipcode), Settings.ZIP_CODE);
+    editor.commit();
+
+    super.onPause();
+  }
+
+  private void initializeWeather() {
+    WeatherRetriever weatherRetriever = new WeatherRetriever(MainActivity.this);
+    weatherRetriever.execute(Settings.ZIP_CODE);
   }
 
 }
