@@ -18,17 +18,21 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.text.Format;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
-public class WeatherRetriever extends AsyncTask<Integer, Void, String> {
+class WeatherRetriever extends AsyncTask<Integer, Void, String> {
 
   private static final String API_KEY = "253bc9eac2015fe7eb6ac0b53a7bbbd6";
   private static final String API_URL = "http://api.openweathermap.org/data/2.5/weather?zip=%d&units=imperial&appid=%s";
 
   private Activity activity;
 
-  public WeatherRetriever(Activity activity) {
+  WeatherRetriever(Activity activity) {
     this.activity = activity;
   }
 
@@ -37,7 +41,7 @@ public class WeatherRetriever extends AsyncTask<Integer, Void, String> {
     String output = "";
 
     try {
-      URL url = new URL(String.format(API_URL, zipCode[0], API_KEY));
+      URL url = new URL(String.format(Locale.ENGLISH, API_URL, zipCode[0], API_KEY));
       HttpURLConnection connection = (HttpURLConnection)url.openConnection();
 
       connection.setRequestMethod("GET");
@@ -52,8 +56,6 @@ public class WeatherRetriever extends AsyncTask<Integer, Void, String> {
       output = br.readLine();
 
       connection.disconnect();
-    } catch (MalformedURLException e) {
-      e.printStackTrace();
     } catch (IOException e) {
       e.printStackTrace();
     }
@@ -74,8 +76,8 @@ public class WeatherRetriever extends AsyncTask<Integer, Void, String> {
 
       JSONObject system = jObject.getJSONObject("sys");
 
-      long sunrise = system.getLong("sunrise");
-      long sunset = system.getLong("sunset");
+      long sunrise = system.getLong("sunrise") * 1000;
+      long sunset = system.getLong("sunset") * 1000;
       Map<String, Long> sunTimes = new HashMap<>();
 
       sunTimes.put("sunrise", sunrise);
@@ -98,7 +100,8 @@ public class WeatherRetriever extends AsyncTask<Integer, Void, String> {
     long sunrise = sunTimes.get("sunrise");
     long sunset = sunTimes.get("sunset");
     long currentTime = System.currentTimeMillis();
-    boolean isDaytime = currentTime >= sunrise && currentTime <= sunset;
+
+    boolean isDaytime = currentTime >= sunrise && currentTime < sunset;
 
     if (code >= 200 && code <= 232) {
       weatherIcon = resources.getDrawable(R.drawable.icon_thunderstorm, null);

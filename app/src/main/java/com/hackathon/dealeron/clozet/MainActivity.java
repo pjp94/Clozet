@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
       Settings.UNIT = tempUnit == 0 ? TemperatureUnit.FAHRENHEIT : TemperatureUnit.CELCIUS;
       Settings.GENDER = gender == 0 ? Gender.MALE : Gender.FEMALE;
       Settings.ZIP_CODE = zipCode;
+      Settings.INITIAL_SETUP_COMPLETE = true;
     }
 
     if (!Settings.isSet()) {
@@ -136,6 +137,11 @@ public class MainActivity extends AppCompatActivity {
     Intent intent;
 
     switch (item.getItemId()) {
+      case R.id.menu_inventory:
+        intent = new Intent(MainActivity.this, FullInventoryActivity.class);
+        startActivity(intent);
+        selected = true;
+        break;
       case R.id.menu_settings:
         intent = new Intent(MainActivity.this, SettingsActivity.class);
         startActivity(intent);
@@ -157,7 +163,7 @@ public class MainActivity extends AppCompatActivity {
     editor.putInt(getString(R.string.saved_temp_unit), Settings.UNIT == TemperatureUnit.FAHRENHEIT ? 0 : 1);
     editor.putInt(getString(R.string.saved_gender), Settings.GENDER == Gender.MALE ? 0 : 1);
     editor.putInt(getString(R.string.saved_zipcode), Settings.ZIP_CODE);
-    editor.commit();
+    editor.apply();
 
     super.onPause();
   }

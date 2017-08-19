@@ -7,14 +7,18 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
-public class SettingsActivity extends AppCompatActivity {
-  //TODO: Add all the customizable options here: temperature unit, gender, zip code, hot/cold values
+import com.hackathon.dealeron.clozet.Settings.Settings;
+
+public class FullInventoryActivity extends AppCompatActivity {
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_settings);
-    getSupportActionBar().setTitle(R.string.settings);
+    setContentView(R.layout.activity_full_inventory);
+    getSupportActionBar().setTitle(R.string.inventory);
+
+    WeatherRetriever weatherRetriever = new WeatherRetriever(this);
+    weatherRetriever.execute(Settings.ZIP_CODE);
   }
 
   @Override
@@ -31,12 +35,12 @@ public class SettingsActivity extends AppCompatActivity {
 
     switch (item.getItemId()) {
       case R.id.menu_home:
-        intent = new Intent(SettingsActivity.this, MainActivity.class);
+        intent = new Intent(FullInventoryActivity.this, MainActivity.class);
         startActivity(intent);
         selected = true;
         break;
-      case R.id.menu_inventory:
-        intent = new Intent(SettingsActivity.this, FullInventoryActivity.class);
+      case R.id.menu_settings:
+        intent = new Intent(FullInventoryActivity.this, SettingsActivity.class);
         startActivity(intent);
         selected = true;
         break;
