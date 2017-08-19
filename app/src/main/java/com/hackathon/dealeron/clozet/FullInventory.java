@@ -35,6 +35,8 @@ public class FullInventory {
         return context.getResources().getDrawable(R.drawable.baseball_cap, null);
       case Beenie:
         return context.getResources().getDrawable(R.drawable.beenie_, null);
+      case None:
+        return context.getResources().getDrawable(R.drawable.empty_hat, null);
       default:
         return context.getResources().getDrawable(R.drawable.missing_icon, null);
     }
@@ -110,6 +112,7 @@ public class FullInventory {
   private void populateHeadwear() {
     HEADWEAR_TYPES.add(HeadwearType.BaseballCap);
     HEADWEAR_TYPES.add(HeadwearType.Beenie);
+    HEADWEAR_TYPES.add(HeadwearType.None);
   }
 
   private void populateTops() {

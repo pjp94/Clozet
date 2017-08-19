@@ -12,5 +12,6 @@ public enum HeadwearType {
     Fedora,
     SkiMask,
     Scarf,
-    Beenie
+    Beenie,
+    None
 }

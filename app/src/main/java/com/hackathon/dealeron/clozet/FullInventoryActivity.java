@@ -151,14 +151,14 @@ public class FullInventoryActivity extends AppCompatActivity {
     headwearItem.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-        Drawable drawable = ((ImageView)v).getDrawable();
         dialogImage.setImageDrawable(((ImageView)v).getDrawable());
         dialog.show();
       }
     });
   }
 
-  private void InitializeTopSection(AlertDialog dialog, View settingsDialog){
+  private void InitializeTopSection(final AlertDialog dialog, View settingsDialog){
+    final ImageView dialogImage = (ImageView)settingsDialog.findViewById(R.id.custom_clothes_image);
     currentTopPosition = 0;
     topSelector = (LinearLayout)findViewById(R.id.top_selector);
     allSelectors.add(topSelector);
@@ -209,9 +209,18 @@ public class FullInventoryActivity extends AppCompatActivity {
         topItem.setImageDrawable(inventory.GetTopImage(getApplicationContext(), inventory.TOP_TYPES.get(currentTopPosition)));
       }
     });
+
+    topItem.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        dialogImage.setImageDrawable(((ImageView)v).getDrawable());
+        dialog.show();
+      }
+    });
   }
 
-  private void InitializeBottomSection(AlertDialog dialog, View settingsDialog){
+  private void InitializeBottomSection(final AlertDialog dialog, View settingsDialog){
+    final ImageView dialogImage = (ImageView)settingsDialog.findViewById(R.id.custom_clothes_image);
     currentBottomPosition = 0;
     bottomSelector = (LinearLayout)findViewById(R.id.bottom_selector);
     allSelectors.add(bottomSelector);
@@ -262,9 +271,18 @@ public class FullInventoryActivity extends AppCompatActivity {
         bottomItem.setImageDrawable(inventory.GetBottomImage(getApplicationContext(), inventory.BOTTOM_TYPES.get(currentBottomPosition)));
       }
     });
+
+    bottomItem.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        dialogImage.setImageDrawable(((ImageView)v).getDrawable());
+        dialog.show();
+      }
+    });
   }
 
-  private void InitializeFootwearSection(AlertDialog dialog, View settingsDialog){
+  private void InitializeFootwearSection(final AlertDialog dialog, View settingsDialog){
+    final ImageView dialogImage = (ImageView)settingsDialog.findViewById(R.id.custom_clothes_image);
     currentFootwearPosition = 0;
     footwearSelector = (LinearLayout)findViewById(R.id.footwear_selector);
     allSelectors.add(footwearSelector);
@@ -313,6 +331,14 @@ public class FullInventoryActivity extends AppCompatActivity {
           currentFootwearPosition = inventory.FOOTWEAR_TYPES.size() - 1;
         }
         footwearItem.setImageDrawable(inventory.GetFootwearImage(getApplicationContext(), inventory.FOOTWEAR_TYPES.get(currentFootwearPosition)));
+      }
+    });
+
+    footwearItem.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        dialogImage.setImageDrawable(((ImageView)v).getDrawable());
+        dialog.show();
       }
     });
   }
