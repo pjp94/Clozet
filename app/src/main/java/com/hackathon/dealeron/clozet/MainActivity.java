@@ -1,5 +1,6 @@
 package com.hackathon.dealeron.clozet;
 
+import android.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
