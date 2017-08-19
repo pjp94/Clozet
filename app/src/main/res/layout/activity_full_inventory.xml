@@ -74,20 +74,80 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/collapse_tops"
+            android:id="@+id/collapse_top"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:text="@string/tops"
+            android:text="@string/top"
             android:textSize="24sp" />
 
+        <LinearLayout
+            android:id="@+id/top_selector"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:visibility="gone"
+            android:layout_gravity="center">
+
+            <ImageButton
+                android:id="@+id/top_left"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/left_chevron"
+                android:layout_gravity="center"
+                android:background="?android:selectableItemBackground"/>
+
+            <ImageView
+                android:id="@+id/top_item"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <ImageButton
+                android:id="@+id/top_right"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/right_chevron"
+                android:layout_gravity="center"
+                android:background="?android:selectableItemBackground" />
+        </LinearLayout>
+
         <TextView
-            android:id="@+id/collapse_bottoms"
+            android:id="@+id/collapse_bottom"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:text="@string/bottoms"
+            android:text="@string/bottom"
             android:textSize="24sp" />
+
+        <LinearLayout
+            android:id="@+id/bottom_selector"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:visibility="gone"
+            android:layout_gravity="center">
+
+            <ImageButton
+                android:id="@+id/bottom_left"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/left_chevron"
+                android:layout_gravity="center"
+                android:background="?android:selectableItemBackground"/>
+
+            <ImageView
+                android:id="@+id/bottom_item"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <ImageButton
+                android:id="@+id/bottom_right"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/right_chevron"
+                android:layout_gravity="center"
+                android:background="?android:selectableItemBackground" />
+        </LinearLayout>
 
         <TextView
             android:id="@+id/collapse_footwear"
@@ -96,6 +156,36 @@
             android:layout_margin="10dp"
             android:text="@string/footwear"
             android:textSize="24sp" />
+
+        <LinearLayout
+            android:id="@+id/footwear_selector"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:visibility="gone"
+            android:layout_gravity="center">
+
+            <ImageButton
+                android:id="@+id/footwear_left"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/left_chevron"
+                android:layout_gravity="center"
+                android:background="?android:selectableItemBackground"/>
+
+            <ImageView
+                android:id="@+id/footwear_item"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <ImageButton
+                android:id="@+id/footwear_right"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/right_chevron"
+                android:layout_gravity="center"
+                android:background="?android:selectableItemBackground" />
+        </LinearLayout>
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

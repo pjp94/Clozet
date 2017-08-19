@@ -29,8 +29,8 @@
     <string name="saved_value_hot">SAVED_VALUE_HOT</string>
 
     <string name="headwear">Headwear</string>
-    <string name="tops">Tops</string>
-    <string name="bottoms">Bottoms</string>
+    <string name="top">Tops</string>
+    <string name="bottom">Bottoms</string>
     <string name="footwear">Footwear</string>
 
     <string name="set_weather_type">Set weather types:</string>
