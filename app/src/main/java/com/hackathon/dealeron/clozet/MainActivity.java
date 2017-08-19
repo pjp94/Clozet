@@ -9,6 +9,10 @@ public class MainActivity extends AppCompatActivity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
+
+    WeatherRetriever weatherRetriever = new WeatherRetriever(this);
+
+    weatherRetriever.execute(20855);
   }
 
 }
