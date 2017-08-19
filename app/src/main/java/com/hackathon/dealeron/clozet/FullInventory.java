@@ -7,15 +7,17 @@ import com.hackathon.dealeron.clozet.Models.Tops.TopType;
 import com.hackathon.dealeron.clozet.Settings.Gender;
 import com.hackathon.dealeron.clozet.Settings.Settings;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class FullInventory {
 
-  private static final Set<HeadwearType> HEADWEAR_TYPES = new HashSet<>();
-  private static final Set<TopType> TOP_TYPES = new HashSet<>();
-  private static final Set<BottomType> BOTTOM_TYPES = new HashSet<>();
-  private static final Set<FootwearType> FOOTWEAR_TYPES = new HashSet<>();
+  public static final List<HeadwearType> HEADWEAR_TYPES = new ArrayList<>();
+  public static final Set<TopType> TOP_TYPES = new HashSet<>();
+  public static final Set<BottomType> BOTTOM_TYPES = new HashSet<>();
+  public static final Set<FootwearType> FOOTWEAR_TYPES = new HashSet<>();
 
   public FullInventory() {
     populateHeadwear();
@@ -25,14 +27,14 @@ public class FullInventory {
   }
 
   private void populateHeadwear() {
-    HEADWEAR_TYPES.add(HeadwearType.Bandana);
     HEADWEAR_TYPES.add(HeadwearType.BaseballCap);
+    //HEADWEAR_TYPES.add(HeadwearType.Bandana);
     HEADWEAR_TYPES.add(HeadwearType.Beenie);
-    HEADWEAR_TYPES.add(HeadwearType.CowboyHat);
+    /*HEADWEAR_TYPES.add(HeadwearType.CowboyHat);
     HEADWEAR_TYPES.add(HeadwearType.Fedora);
     HEADWEAR_TYPES.add(HeadwearType.Scarf);
     HEADWEAR_TYPES.add(HeadwearType.SkiMask);
-    HEADWEAR_TYPES.add(HeadwearType.Snapback);
+    HEADWEAR_TYPES.add(HeadwearType.Snapback);*/
   }
 
   private void populateTops() {
